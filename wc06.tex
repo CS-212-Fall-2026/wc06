@@ -1,0 +1,50 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage[a4paper]{geometry}
+\usepackage{hyperref}
+\usepackage{mdframed}
+
+\title{Weekly Challenge 06: Turing Machines and Variants}
+\author{CS 212 Nature of Computation\\Habib University}
+\date{Fall 2026}
+
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+
+% \printanswers %uncomment this line
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+    \titledquestion{Binary tree Turing machines}
+    In your CS 212 course so far we have studied many models of computations. The strongest model we have encountered is the Turing machine. By the Church-Turing thesis we know a function is effectively calculable if its computable by a Turing machine. That means all sufficiently powerful, reasonable, and realistic models of computation are equivalent. A Turing machine has a single infinite tape that can be sequentially accessed, this worked as a long infinite array. But what if we swapped this tape with some other date structure like a binary tree? 
+
+    A binary tree Turing machine is a like a regular two tape deterministic turing machine with binary tree instead of a work tape. The machine has a read only input tape the input tape head can traverse the input tape freely and read any symbol from it but it can never write on the input tape. The machine also has a read-write binary tree and a binary tree head that can freely traverse the binary tree. At the start of computation the binary tree starts with a single vertex with the blank symbol on it. At any point the machine can either write a symbol on of the vertices the head is at. The head can either visit a vertex already present on the binary tree or if the current vertex the head is on is a vertex with less than two children, the head can create either a left child or a right child vertex and traverse to that.  
+
+    More formally we can define the binary tree turing machine as a 7-tuple 
+    $$(Q, \Sigma, \Gamma, \delta, q_0, q_{accept}, q_{reject})$$ 
+    Where we keep everything same as the deterministic turing machine except for the transition function. The transition function $\delta$ is now defined as: 
+    $$\delta: Q \times \Gamma \times \Gamma \to Q \times \Gamma \times\{L,R\} \times \{P, L, R\}$$
+    Here the transition $\delta(q,a,b) = (r,y,d_1,d_2)$ represents that the machine on state $q$ read $a$ on the input tape and $b$ on the binary tree then moved to state $r$, wrote $y$ on the binary tree, the input tape head moved in direction $d_1$ (where $d_1$ can be $R$ for more right and $L$ for move left), and the binary tree head moved in direction $d_2$ (where $d_2$ can be $R$ for move to the right child, $L$ for move left child, or $P$ for move to the parent).
+
+   Show that binary tree turing machine is equivalent to a deterministic turing machine in terms of computability. That is show that a language is Turing-recognizable if and only if some binary tree Turing machine recognizes it.
+ 
+    \begin{solution}
+        % Enter your solution here.
+    \end{solution}
+    
+    
+
+    
+  
+\end{questions}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
